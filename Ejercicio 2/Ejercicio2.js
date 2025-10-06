@@ -31,17 +31,14 @@ const RUTA_NUEVO_ARCHIVO = path.join(__dirname, 'informacion.txt');
 const TIEMPO_ESPERA_MS = 10000; // 10 segundos
 
 async function Ejercicio2() {
-    console.log("--- INICIANDO EJERCICIO 2 ---");
     try {
         // 1: CREAR Y ESCRIBIR (fs.writeFile)
         const contenidoInicial = `Nombre: juan
         Edad: 20
         Carrera: Programación\n`;
-        
         // fs.writeFile crea o sobrescribe el archivo de forma asíncrona
         await fs.writeFile(RUTA_ARCHIVO_INICIAL, contenidoInicial, 'utf8');
         console.log(`1: '${path.basename(RUTA_ARCHIVO_INICIAL)}' creado y escrito.`); 
-        
         // 2: LEER E IMPRIMIR (fs.readFile)
         const contenidoLeido = await fs.readFile(RUTA_ARCHIVO_INICIAL, 'utf8');
         console.log(`\n--- Contenido actual de ${path.basename(RUTA_ARCHIVO_INICIAL)} ---`);

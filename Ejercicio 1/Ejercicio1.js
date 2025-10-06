@@ -5,21 +5,21 @@ const path = require('path');
 const LOG_FILE = path.join(__dirname, 'log.txt');
 const TAREA_DURACION_MS = 5000;
 
-
-function formatoFecha() {
+function obtenerTimestampFormateado() {
     const fechaActual = new Date();
-    const pad = (num) => num.toString().padStart(2, '0');
+    // Función de relleno para asegurar dos dígitos (ej: 5 -> 05)
+    const formato = (num) => num.toString().padStart(2, '0');
 
     const fecha = [
         fechaActual.getFullYear(),
-        pad(fechaActual.getMonth() + 1),
-        pad(fechaActual.getDate())
+        formato(fechaActual.getMonth() + 1), 
+        formato(fechaActual.getDate())
     ].join('-');
 
     const tiempo = [
-        pad(fechaActual.getHours()),
-        pad(fechaActual.getMinutes()),
-        pad(fechaActual.getSeconds())
+        formato(fechaActual.getHours()),
+        formato(fechaActual.getMinutes()),
+        formato(fechaActual.getSeconds())
     ].join(':');
 
     return `[${fecha} ${tiempo}]`;
@@ -27,7 +27,7 @@ function formatoFecha() {
 
 // Implementa fs.appendFile() (asíncrono) para registros de logs
 async function log(message) {
-    const timestamp = formatoFecha();
+    const timestamp = obtenerTimestampFormateado();
     const logEntry = `${timestamp} - ${message}\n`;
 
     try {
