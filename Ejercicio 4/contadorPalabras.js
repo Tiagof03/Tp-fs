@@ -23,9 +23,9 @@ async function contadorPalabras() {
         console.log(`\nLa palabra "${palabraBuscada}" aparece ${conteo} veces en el archivo "${nombreArchivo}".`);
     } catch (error) {
         if (error.code === 'ENOENT') {
-            console.error(`❌ ERROR: El archivo "${nombreArchivo}" no fue encontrado en la ruta: ${rutaCompletaArchivo}`);
+            console.error(`ERROR: El archivo "${nombreArchivo}" no fue encontrado en la ruta: ${rutaCompletaArchivo}`);
         } else {
-            console.error(`❌ Ocurrió un error al procesar el archivo:`, error.message);
+            console.error(`Ocurrió un error al procesar el archivo:`, error.message);
         }
     }
 }
